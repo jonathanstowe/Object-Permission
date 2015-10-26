@@ -20,8 +20,8 @@ for Perl 6 objects.
 
 	my $foo = Foo.new;
 
-   $foo.bar();   # Executes okay
-   say $foo.baz; # Throws X::NotAuthorised
+	$foo.bar();   # Executes okay
+	say $foo.baz; # Throws X::NotAuthorised
 
 ## Description
 
@@ -36,7 +36,7 @@ The intent is that ```$*AUTH-USER``` is initialised with an object
 of some class that does the role ```Object::Permission::User``` which
 populates the permissions as per the application logic.
 
-nstallation
+## Installation
 
 Assuming you have a working perl6 installation you should be able to
 install this with *ufo* :
