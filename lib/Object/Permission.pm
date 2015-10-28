@@ -1,3 +1,50 @@
+use v6;
+
+=begin pod
+
+=head1 NAME
+
+Object::Permission - Experimental method (and public attribute accessor,) level authorisation
+
+=head1 SYNOPSIS
+
+=begin code
+
+	use Object::Permission;
+
+	class Foo {
+		has $.baz is authorised-by('baz');
+
+		method bar() is authorised-by('barbar') {
+			...
+		}
+	}
+	
+	# Object::Permission::User is a role, just use type pun
+	$*AUTH-USER = Object::Permission::User.new(permissions => <barbar zub>);
+
+	my $foo = Foo.new;
+
+	$foo.bar();   # Executes okay
+	say $foo.baz; # Throws X::NotAuthorised
+
+=end code
+
+=head1 DESCRIPTION
+
+This is an experimental module to provide a rudimentary authorisation
+mechanism for classes whereby selected methods or public attribute
+accessors can require a named permission to execute, the permissions
+associated with the dynamic variable C<$*AUTH-USER> being checked
+at invocation and an exception being thrown if the User object does not
+have the required permission.
+
+The intent is that C<$*AUTH-USER> is initialised with an object
+of some class that does the role L<Object::Permission::User> which
+populates the permissions as per the application logic.
+
+=end pod
+
 module Object::Permission:ver<v0.0.1>:auth<github:jonathanstowe> {
 
     role User {
