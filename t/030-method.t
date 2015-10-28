@@ -75,7 +75,6 @@ my $baz = Baz.new;
 $*AUTH-USER = Object::Permission::User.new(permissions => <test-1-ok>);
 
 
-my $ret;
 lives-ok { $ret = $baz.test-one('test-one') }, "okay for method we have permission for with argument";
 is $ret, "test-one", "sanity check we got something back";
 throws-like { $baz.test-two() }, X::NotAuthorised, permission => 'test-2-notok', "throws for the other one";
