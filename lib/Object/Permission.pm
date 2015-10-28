@@ -1,5 +1,5 @@
-module Object::Permission
-{
+module Object::Permission:ver<v0.0.1>:auth<github:jonathanstowe> {
+
     role User {
         has @.permissions is rw;
     }
