@@ -30,6 +30,35 @@ $*AUTH-USER.permissions.push('test-2-notok');
 lives-ok { $ret = $foo.test-two() }, "okay for method we have just add the permission for";
 is $ret, "test-two", "sanity check we got something back";
 
+# rw method tests
+
+class Bar {
+    has $!test-rw-one = "test-one-init";
+
+    method test-rw-one() is rw is authorised-by('test-1-ok') {
+        $!test-rw-one;
+    }
+
+    has $!test-rw-two = "test-two-init";
+    method test-rw-two() is rw is authorised-by('test-2-notok') {
+        $!test-rw-two;
+    }
+}
+
+my $bar = Bar.new;
+
+# reset the user for simplicity
+$*AUTH-USER = Object::Permission::User.new(permissions => <test-1-ok>);
+
+lives-ok { $bar.test-rw-one = "test-one-set" }, "rw method okay";
+is $bar.test-rw-one, "test-one-set", "and it actually got set";
+
+throws-like { $bar.test-rw-two = "test-two-set" }, X::NotAuthorised, "rw method without the permission";
+
+# need to set the permission to check it from here.
+$*AUTH-USER.permissions.push('test-2-notok');
+is $bar.test-rw-two, "test-two-init", "and the value didn't get set";
+
 done-testing;
 
 # vim: expandtab shiftwidth=4 ft=perl6

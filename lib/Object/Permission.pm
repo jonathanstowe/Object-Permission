@@ -28,12 +28,22 @@ module Object::Permission
         if $authorised-by.defined {
             $meth does PermissionedMethod;
             $meth.permission = $authorised-by;
-            $meth.wrap(method (|c) {
+            my $rw = so $meth.rw;
+            my $wrapper = $rw ?? method (|c) is rw {
+                if !?$*AUTH-USER.permissions.grep($meth.permission) {
+                    X::NotAuthorised.new(method => $meth, permission => $meth.permission).throw;
+                }
+                callsame;
+            }
+            !! 
+            method (|c) {
                 if !?$*AUTH-USER.permissions.grep($meth.permission) {
                     X::NotAuthorised.new(method => $meth, permission => $meth.permission).throw;
                 }
                 nextsame;
-            });
+            };
+
+            $meth.wrap($wrapper);
         }
 
 
