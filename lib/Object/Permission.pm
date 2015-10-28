@@ -5,19 +5,37 @@ module Object::Permission
     }
 
     class X::NotAuthorised is Exception {
+        has Method $.method;
+        has Str $.permission;
+        method message() {
+            "method '{ $!method.name }' requires permission '{ $.permission }'"
+        }
     }
 
-    role PermissionedMethod {
+    role PermissionedThing {
+        has Str $.permission is rw;
+    }
+    role PermissionedMethod does PermissionedThing {
 
     }
 
-    role PermissionedAttribute {
+    role PermissionedAttribute does PermissionedThing {
 
     }
 
-    multi sub trait_mod:<is> (Method:D $meth, :$authorised-by!) is export {
+    multi sub trait_mod:<is> (Method:D $meth, Str :$authorised-by!) is export {
 
-        $meth does PermissionedMethod;
+        if $authorised-by.defined {
+            $meth does PermissionedMethod;
+            $meth.permission = $authorised-by;
+            $meth.wrap(method (|c) {
+                if !?$*AUTH-USER.permissions.grep($meth.permission) {
+                    X::NotAuthorised.new(method => $meth, permission => $meth.permission).throw;
+                }
+                nextsame;
+            });
+        }
+
 
     }
 
