@@ -19,10 +19,6 @@ module Object::Permission
 
     }
 
-    role PermissionedAttribute does PermissionedThing {
-
-    }
-
     multi sub trait_mod:<is> (Method:D $meth, Str :$authorised-by!) is export {
 
         if $authorised-by.defined {
@@ -45,12 +41,31 @@ module Object::Permission
 
             $meth.wrap($wrapper);
         }
-
-
     }
 
+    role PermissionedAttribute does PermissionedThing {
+
+        # A bit icky but better than over-riding compose altogether
+        method compose(Mu $package) {
+            # not sure if the return matters
+            my $r = callsame;
+            if self.has_accessor {
+                my $meth_name = self.name.substr(2);
+                if $package.can($meth_name)[0] -> $meth {
+                    trait_mod:<is>($meth, authorised-by => $.permission);
+                }
+            }
+            $r;
+        }
+    }
+
+
     multi sub trait_mod:<is> (Attribute:D $attr, :$authorised-by!) is export {
-        $attr does PermissionedAttribute;
+
+        if $authorised-by.defined {
+            $attr does PermissionedAttribute;
+            $attr.permission = $authorised-by;
+        }
     }
 
     # This is by the way of a hack to type constrain the
