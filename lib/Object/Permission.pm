@@ -1,4 +1,4 @@
-use v6.c;
+use v6;
 
 =begin pod
 
@@ -10,23 +10,23 @@ Object::Permission - Experimental method (and public attribute accessor,) level 
 
 =begin code
 
-	use Object::Permission;
+    use Object::Permission;
 
-	class Foo {
-		has $.baz is authorised-by('baz');
+    class Foo {
+    	has $.baz is authorised-by('baz');
 
-		method bar() is authorised-by('barbar') {
-			...
-		}
-	}
-	
-	# Object::Permission::User is a role, just use type pun
-	$*AUTH-USER = Object::Permission::User.new(permissions => <barbar zub>);
+    	method bar() is authorised-by('barbar') {
+    		...
+    	}
+    }
 
-	my $foo = Foo.new;
+    # Object::Permission::User is a role, just use type pun
+    $*AUTH-USER = Object::Permission::User.new(permissions => <barbar zub>);
 
-	$foo.bar();   # Executes okay
-	say $foo.baz; # Throws X::NotAuthorised
+    my $foo = Foo.new;
+
+    $foo.bar();   # Executes okay
+    say $foo.baz; # Throws X::NotAuthorised
 
 =end code
 
@@ -54,7 +54,7 @@ module Object::Permission:ver<0.0.2>:auth<github:jonathanstowe> {
     class X::NotAuthorised is Exception {
         has Method $.method;
         has Str $.permission;
-        method message() {
+        method message(--> Str) {
             "method '{ $!method.name }' requires permission '{ $.permission }'"
         }
     }
@@ -78,7 +78,7 @@ module Object::Permission:ver<0.0.2>:auth<github:jonathanstowe> {
                 }
                 callsame;
             }
-            !! 
+            !!
             method (|c) {
                 if !?$*AUTH-USER.permissions.grep($meth.permission) {
                     X::NotAuthorised.new(method => $meth, permission => $meth.permission).throw;
@@ -123,9 +123,9 @@ module Object::Permission:ver<0.0.2>:auth<github:jonathanstowe> {
                                                         $user;
                                     },
                                     STORE => sub ($, User $val) {
-												$user = $val;
-								    }
+    											$user = $val;
+    							    }
                                 );
-
-
 }
+
+# vim: ft=perl6
