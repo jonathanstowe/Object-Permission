@@ -52,9 +52,7 @@ install this with *zef* :
 
 ## Support
 
-Suggestions/patches are welcomed via github at:
-
-https://github.com/jonathanstowe/Object-Permission/issues
+Suggestions/patches are welcomed via github at https://github.com/jonathanstowe/Object-Permission/issues
 
 ## Licence
 
@@ -62,5 +60,5 @@ This is free software.
 
 Please see the [LICENCE](LICENCE) file in the distribution
 
-© Jonathan Stowe 2015, 2016, 2017
+© Jonathan Stowe 2015, 2016, 2017, 2019
 

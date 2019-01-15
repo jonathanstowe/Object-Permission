@@ -1,20 +1,21 @@
 {
   "name": "Object::Permission",
+  "auth": "github:jonathanstowe",
+  "version": "0.0.3",
+  "api": "1.0",
+  "description": "Experimental method (and public attribute accessor,) level authorisation",
   "source-url": "git://github.com/jonathanstowe/Object-Permission.git",
   "support": {
-    "source": "git://github.com/jonathanstowe/Object-Permission.git"
+    "source": "git://github.com/jonathanstowe/Object-Permission.git",
+    "bugtracker": "https://github.com/jonathanstowe/Object-Permission/issues"
   },
   "perl": "6.*",
   "resources": [
-    
   ],
   "build-depends": [
-    
   ],
   "author": "Jonathan Stowe <jns+git@gellyfish.co.uk>",
-  "auth": "github:jonathanstowe",
   "depends": [
-    
   ],
   "tags": [
     "devel",
@@ -29,10 +30,8 @@
   "provides": {
     "Object::Permission": "lib/Object/Permission.pm"
   },
-  "version": "0.0.2",
   "authors": [
     "Jonathan Stowe <jns+git@gellyfish.co.uk>"
   ],
-  "description": "Experimental method (and public attribute accessor,) level authorisation",
-  "meta6": "0"
+  "meta-version": "0"
 }

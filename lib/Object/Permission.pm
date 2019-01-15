@@ -13,11 +13,11 @@ Object::Permission - Experimental method (and public attribute accessor,) level 
     use Object::Permission;
 
     class Foo {
-    	has $.baz is authorised-by('baz');
+        has $.baz is authorised-by('baz');
 
-    	method bar() is authorised-by('barbar') {
-    		...
-    	}
+        method bar() is authorised-by('barbar') {
+            ...
+        }
     }
 
     # Object::Permission::User is a role, just use type pun
@@ -45,7 +45,7 @@ populates the permissions as per the application logic.
 
 =end pod
 
-module Object::Permission:ver<0.0.2>:auth<github:jonathanstowe> {
+module Object::Permission:ver<0.0.3>:auth<github:jonathanstowe>:api<1.0> {
 
     role User {
         has @.permissions is rw;
@@ -123,8 +123,8 @@ module Object::Permission:ver<0.0.2>:auth<github:jonathanstowe> {
                                                         $user;
                                     },
                                     STORE => sub ($, User $val) {
-    											$user = $val;
-    							    }
+            									$user = $val;
+            					    }
                                 );
 }
 
