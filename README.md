@@ -1,7 +1,7 @@
 # Object::Permission
 
 Experimental method (and public attribute accessor,) level authorisation
-for Perl 6 objects.
+for Raku objects.
 
 ## Synopsis
 
@@ -38,7 +38,7 @@ populates the permissions as per the application logic.
 
 ## Installation
 
-Assuming you have a working Rakudo Perl 6 installation you should be able to
+Assuming you have a working Rakudo installation you should be able to
 install this with *zef* :
 
     # From the source directory
@@ -60,5 +60,5 @@ This is free software.
 
 Please see the [LICENCE](LICENCE) file in the distribution
 
-© Jonathan Stowe 2015, 2016, 2017, 2019
+© Jonathan Stowe 2015, 2016, 2017, 2019, 2020
 
