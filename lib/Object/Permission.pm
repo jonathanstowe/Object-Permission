@@ -98,7 +98,7 @@ module Object::Permission:ver<0.0.3>:auth<github:jonathanstowe>:api<1.0> {
             my $r = callsame;
             if self.has_accessor {
                 my $meth_name = self.name.substr(2);
-                if $package.can($meth_name)[0] -> $meth {
+                if $package.^can($meth_name)[0] -> $meth {
                     trait_mod:<is>($meth, authorised-by => $.permission);
                 }
             }
