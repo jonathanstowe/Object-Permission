@@ -1,7 +1,7 @@
 {
   "name": "Object::Permission",
   "auth": "github:jonathanstowe",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "api": "1.0",
   "description": "Experimental method (and public attribute accessor,) level authorisation",
   "source-url": "https://github.com/jonathanstowe/Object-Permission.git",

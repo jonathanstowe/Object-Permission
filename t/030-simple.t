@@ -1,4 +1,4 @@
-#!perl6
+#!raku
 
 use v6;
 
@@ -20,4 +20,4 @@ lives-ok { $c = EVAL $def }, "definition with traits compiles";
 isa-ok $c, ::('Foo'), "just check it's a class";
 
 done-testing;
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku

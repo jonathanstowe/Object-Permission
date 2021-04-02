@@ -45,7 +45,7 @@ populates the permissions as per the application logic.
 
 =end pod
 
-module Object::Permission:ver<0.0.3>:auth<github:jonathanstowe>:api<1.0> {
+module Object::Permission:ver<0.0.5>:auth<github:jonathanstowe>:api<1.0> {
 
     role User {
         has @.permissions is rw;
@@ -120,12 +120,12 @@ module Object::Permission:ver<0.0.3>:auth<github:jonathanstowe>:api<1.0> {
     my User $user;
     PROCESS::<$AUTH-USER> := Proxy.new(
                                     FETCH => sub ($) {
-                                                        $user;
+                                        $user;
                                     },
                                     STORE => sub ($, User $val) {
-            									$user = $val;
-            					    }
+                                        $user = $val;
+                                    }
                                 );
 }
 
-# vim: ft=perl6
+# vim: ft=raku

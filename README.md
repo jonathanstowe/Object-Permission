@@ -1,7 +1,8 @@
 # Object::Permission
 
-Experimental method (and public attribute accessor,) level authorisation
-for Raku objects.
+Experimental method (and public attribute accessor,) level authorisation for Raku objects.
+
+![Build Status](https://github.com/jonathanstowe/Object-Permission/workflows/CI/badge.svg)
 
 ## Synopsis
 
@@ -28,18 +29,17 @@ for Raku objects.
 This is an experimental module to provide a rudimentary authorisation
 mechanism for classes whereby selected methods or public attribute
 accessors can require a named permission to execute, the permissions
-associated with the dynamic variable ```$*AUTH-USER``` being checked
+associated with the dynamic variable `$*AUTH-USER` being checked
 at invocation and an exception being thrown if the User object does not
 have the required permission.
 
-The intent is that ```$*AUTH-USER``` is initialised with an object
-of some class that does the role ```Object::Permission::User``` which
+The intent is that `$*AUTH-USER` is initialised with an object
+of some class that does the role `Object::Permission::User` which
 populates the permissions as per the application logic.
 
 ## Installation
 
-Assuming you have a working Rakudo installation you should be able to
-install this with *zef* :
+Assuming you have a working Rakudo installation you should be able to install this with *zef* :
 
     # From the source directory
    
@@ -52,7 +52,7 @@ install this with *zef* :
 
 ## Support
 
-Suggestions/patches are welcomed via github at https://github.com/jonathanstowe/Object-Permission/issues
+Suggestions/patches are welcomed via [github](https://github.com/jonathanstowe/Object-Permission/issues)
 
 ## Licence
 
@@ -60,5 +60,5 @@ This is free software.
 
 Please see the [LICENCE](LICENCE) file in the distribution
 
-© Jonathan Stowe 2015, 2016, 2017, 2019, 2020
+© Jonathan Stowe 2015 - 2021
 

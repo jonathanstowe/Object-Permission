@@ -1,4 +1,4 @@
-#!perl6
+#!raku
 
 use v6;
 use Test;
@@ -14,4 +14,4 @@ throws-like { $*AUTH-USER = "foo" }, X::TypeCheck::Binding, "throws when it gets
 isa-ok $*AUTH-USER, $opu.WHAT, "got the right thing back";
 
 done-testing;
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku

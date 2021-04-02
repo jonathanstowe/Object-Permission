@@ -1,4 +1,4 @@
-#!perl6
+#!raku
 
 use v6;
 
@@ -49,4 +49,4 @@ is $bar.test-rw-two, "test-two-init", "and the value didn't get set";
 
 done-testing;
 
-# vim: expandtab shiftwidth=4 ft=perl6
+# vim: expandtab shiftwidth=4 ft=raku
