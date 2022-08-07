@@ -1,3 +1,5 @@
+v0.0.6	Sun  7 Aug 09:43:58 BST 2022
+	* Upload to zef repository
 v0.0.5		Fri  2 Apr 14:00:05 BST 2021
 	* Switch to GH actions
 v0.0.4		Sat 11 Jan 19:56:02 GMT 2020
@@ -9,3 +11,4 @@ v0.0.2		Sat Mar 12 11:12:24 2016 +0000
 v0.0.1		Thu Dec 24 19:44:58 2015 +0000 
 	* Fix version tag
 	* Add travis
+
